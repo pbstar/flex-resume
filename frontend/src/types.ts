@@ -1,0 +1,75 @@
+/** 与 raw-resume.json 结构一致的简历数据 */
+export interface AdaptedResume {
+  basic: {
+    name: string;
+    title: string;
+    gender: string;
+    age: number;
+    education: string;
+    yearsOfExperience: number;
+    phone: string;
+    email: string;
+    github: string;
+    blog: string;
+    linkedin: string | null;
+  };
+  skills: {
+    category: string;
+    tags: string[];
+    level: string;
+  }[];
+  workExperience: {
+    id: string;
+    company: string;
+    position: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    highlights: string[];
+    tags: string[];
+  }[];
+  projects: {
+    id: string;
+    company: string;
+    name: string;
+    platform: string;
+    startDate: string;
+    endDate: string;
+    techStack: string[];
+    description: string;
+    responsibilities: string[];
+    highlights: string[];
+    tags: string[];
+  }[];
+  education: {
+    school: string;
+    major: string;
+    degree: string;
+    startDate: string;
+    endDate: string;
+  }[];
+  selfEvaluation: string[];
+  extras: {
+    certifications: string[];
+    languages: string[];
+    expectedSalary: string | null;
+    availability: string;
+  };
+}
+
+export interface Greeting {
+  text: string;
+  label: string;
+}
+
+export interface ResumeConfig {
+  length: string; // '1页' ~ '5页'
+  focus: "项目经验优先" | "技能优先" | "综合";
+  style: "专业" | "亲和" | "简洁";
+}
+
+export interface GreetingConfig {
+  count: number;
+  style: "亲切热情" | "专业正式" | "简洁直接";
+  maxWords: "50字以内" | "50-150字" | "150字以上";
+}

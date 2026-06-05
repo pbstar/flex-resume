@@ -1,0 +1,20 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+/* pc样式 */
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+}

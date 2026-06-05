@@ -1,0 +1,198 @@
+.jd-input {
+  width: 100%;
+}
+
+/* ====== 双栏输入区 ====== */
+.jd-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.jd-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.jd-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.jd-optional {
+  font-weight: 400;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.jd-input textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #dde;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  resize: vertical;
+  background: #fafbfc;
+}
+
+.jd-input textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+}
+
+/* ====== 按钮栏 ====== */
+.jd-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.action-group {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* 主按钮 — 统一尺寸 */
+.btn-primary,
+.btn-accent {
+  min-width: 152px;
+  height: 44px;
+  padding: 0 24px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn-accent {
+  background: #fff;
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background: #f5f3ff;
+}
+
+.btn-primary:disabled,
+.btn-accent:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 选项按钮 — 与主按钮同高 */
+.btn-config {
+  height: 44px;
+  width: 44px;
+  padding: 0;
+  border: 1px solid #dde;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-config:hover {
+  background: #f5f5fa;
+  color: #555;
+  border-color: #ccc;
+}
+
+/* ====== Spinner ====== */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+}
+
+.btn-accent .spinner {
+  border-color: rgba(102, 126, 234, 0.2);
+  border-top-color: #667eea;
+}
+
+/* ====== 配置面板 ====== */
+.config-panel {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid #eef;
+  border-radius: 10px;
+  z-index: 10;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.config-panel label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.config-panel select {
+  padding: 5px 10px;
+  border: 1px solid #dde;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fafbfc;
+  cursor: pointer;
+}
+
+.config-panel select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* ====== 响应式 ====== */
+@media screen and (max-width: 640px) {
+  .jd-row {
+    grid-template-columns: 1fr;
+  }
+  .jd-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-primary,
+  .btn-accent {
+    width: calc(100% - 52px);
+  }
+  .action-group {
+    flex-wrap: wrap;
+  }
+}

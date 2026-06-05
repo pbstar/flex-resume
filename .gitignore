@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+*.log
+backend/src/data/raw-resume.json
+backend/src/data/history/

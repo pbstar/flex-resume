@@ -1,0 +1,232 @@
+/* ========== 商务风：专业稳重，左右分栏 ========== */
+
+.business-template {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 顶部 */
+.biz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  background: #1a3a5c;
+  color: #fff;
+}
+
+.biz-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #fff;
+  border: none;
+  padding: 0;
+}
+
+.biz-title {
+  font-size: 16px;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.biz-header-right {
+  text-align: right;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.biz-header-right span {
+  display: block;
+}
+
+/* 左右布局 */
+.biz-body {
+  display: flex;
+  min-height: 600px;
+}
+
+/* 左侧栏 */
+.biz-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #f4f6f9;
+  padding: 24px 20px;
+}
+
+.biz-sidebar .biz-section {
+  margin-bottom: 28px;
+}
+
+.biz-sidebar h3 {
+  font-size: 15px;
+  color: #1a3a5c;
+  margin: 0 0 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #1a3a5c;
+}
+
+.biz-info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.biz-info-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-size: 13px;
+}
+
+.biz-label {
+  color: #888;
+}
+
+.biz-skill-block {
+  margin-bottom: 12px;
+}
+
+.biz-skill-cat {
+  font-size: 13px;
+  color: #1a3a5c;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.biz-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.biz-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: 11px;
+  color: #1a3a5c;
+  background: #dce6f0;
+  border-radius: 3px;
+}
+
+.biz-edu-item {
+  margin-bottom: 10px;
+}
+
+.biz-edu-school {
+  font-weight: 600;
+  font-size: 13px;
+  margin: 0;
+}
+
+.biz-edu-major {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.biz-edu-date {
+  font-size: 11px;
+  color: #999;
+  margin: 0;
+}
+
+/* 右侧主体 */
+.biz-main {
+  flex: 1;
+  padding: 24px 30px;
+}
+
+.biz-main .biz-section {
+  margin-bottom: 24px;
+}
+
+.biz-main h3 {
+  font-size: 16px;
+  color: #1a3a5c;
+  margin: 0 0 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d0d6dd;
+}
+
+.biz-block {
+  margin-bottom: 18px;
+}
+
+.biz-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.biz-block-head strong {
+  color: #1a3a5c;
+}
+
+.biz-role,
+.biz-company {
+  font-size: 13px;
+  color: #666;
+}
+
+.biz-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.biz-tech {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.biz-desc {
+  color: #555;
+  margin: 4px 0;
+}
+
+.biz-main ul {
+  padding-left: 20px;
+  margin: 4px 0;
+}
+
+.biz-main ul li {
+  margin-bottom: 2px;
+}
+
+/* 响应式 */
+@media screen and (max-width: 640px) {
+  .biz-body {
+    flex-direction: column;
+  }
+  .biz-sidebar {
+    width: 100%;
+  }
+  .biz-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
+  }
+  .biz-header-right {
+    text-align: center;
+  }
+  .biz-block-head {
+    flex-wrap: wrap;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0.8cm 0 0.5cm;
+  }
+  .business-template {
+    max-width: 100%;
+  }
+}

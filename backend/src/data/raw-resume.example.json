@@ -1,0 +1,107 @@
+{
+  "basic": {
+    "name": "姓名",
+    "title": "目标职位",
+    "gender": "男/女",
+    "age": 0,
+    "education": "本科",
+    "yearsOfExperience": 0,
+    "phone": "你的手机号",
+    "email": "your-email@example.com",
+    "github": "https://github.com/your-id",
+    "blog": "你的博客地址或留空",
+    "linkedin": null
+  },
+  "skills": [
+    {
+      "category": "前端技术",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Vue3",
+        "Vite",
+        "Webpack"
+      ],
+      "level": "expert"
+    },
+    {
+      "category": "后端技术",
+      "tags": [
+        "Node.js",
+        "Express",
+        "MySQL"
+      ],
+      "level": "proficient"
+    }
+  ],
+  "workExperience": [
+    {
+      "id": "work-1",
+      "company": "公司名称",
+      "position": "职位",
+      "startDate": "YYYY-MM",
+      "endDate": "YYYY-MM（或 至今）",
+      "description": "工作职责简述",
+      "highlights": [
+        "亮点1",
+        "亮点2"
+      ],
+      "tags": [
+        "技术标签1",
+        "技术标签2"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "company": "所属公司",
+      "name": "项目名称",
+      "platform": "PC 或 Mobile",
+      "startDate": "YYYY-MM",
+      "endDate": "YYYY-MM",
+      "techStack": [
+        "技术栈1",
+        "技术栈2"
+      ],
+      "description": "项目描述 — 建议包含「业务场景 → 技术方案 → 关键成果」结构",
+      "responsibilities": [
+        "职责1",
+        "职责2"
+      ],
+      "highlights": [
+        "亮点1"
+      ],
+      "tags": [
+        "标签1",
+        "标签2"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "学校名称",
+      "major": "专业",
+      "degree": "本科/硕士/专科",
+      "startDate": "YYYY-MM",
+      "endDate": "YYYY-MM"
+    }
+  ],
+  "selfEvaluation": [
+    "自我评价1：突出技术能力或业务理解",
+    "自我评价2：突出团队协作或管理能力",
+    "自我评价3：突出个人特质或成就"
+  ],
+  "extras": {
+    "certifications": [],
+    "languages": [
+      "普通话",
+      "英语 CET-4"
+    ],
+    "expectedSalary": null,
+    "availability": "随时到岗"
+  }
+}
