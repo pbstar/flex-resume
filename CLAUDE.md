@@ -137,7 +137,10 @@ resume/
 │   │   │       └── HomePage.css
 │   │   ├── components/
 │   │   │   ├── JDInput/          # JD 输入区域（双栏输入 + 配置面板）
-│   │   │   ├── TemplateRenderer/ # 模板渲染路由（按 templateId 选择模板）
+│   │   │   ├── ResumePreview/    # 简历预览区（空状态 / 模板渲染 / Loading）
+│   │   │   ├── GreetingPanel/    # 打招呼话术面板（列表 + 复制）
+│   │   │   ├── HistoryPanel/     # 历史记录侧边面板
+│   │   │   ├── Toast/            # Toast 提示组件
 │   │   │   └── ErrorBoundary/    # React 错误边界（捕获渲染异常）
 │   │   └── templates/
 │   │       ├── simple/     # 简洁风 — 传统单栏，适合技术岗
@@ -224,7 +227,7 @@ cd frontend && npm run build  # Vite 生产构建
 - 页面组件放 `pages/`，可复用组件放 `components/`
 - 模板组件遵循统一接口：`{ data: AdaptedResume }`，样式采用独立 CSS 文件
 - 模板 CSS 使用命名空间前缀：简洁风 `.simple-template`、商务风 `.biz-*`、创意风 `.ct-*`
-- 新增模板需在 `TemplateRenderer.tsx` 的 `TEMPLATES` 字典中注册
+- 新增模板需在 `HomePage.tsx` 的 `TEMPLATES` 字典中注册
 - 类型定义集中在 `types.ts`，与后端的 `raw-resume.json` 结构保持一致
 
 ### 环境变量

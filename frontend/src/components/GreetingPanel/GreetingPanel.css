@@ -1,0 +1,71 @@
+.greeting-section {
+  padding: 24px 12px 0;
+}
+
+.greeting-section h3 {
+  font-size: 16px;
+  color: var(--color-primary);
+  margin: 0 0 12px 0;
+}
+
+.greeting-loading {
+  min-height: 120px;
+}
+
+.greeting-loading p {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.greeting-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.greeting-card {
+  padding: 14px 18px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.greeting-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.greeting-label {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 12px;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  border-radius: var(--radius-full);
+}
+
+.btn-copy-sm {
+  padding: 3px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 14px;
+  background: var(--color-surface);
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all 0.15s;
+}
+
+.btn-copy-sm:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.greeting-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,137 @@
+.history-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 360px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.06);
+  animation: slideInRight 0.2s ease-out;
+}
+.history-panel.closing {
+  animation: slideOutRight 0.2s ease-in forwards;
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.history-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.history-panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-primary);
+}
+.history-panel-header button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.history-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.history-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.history-item:hover {
+  background: var(--color-bg);
+}
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.history-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 10px;
+}
+.badge-resume {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+.badge-greeting {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+.history-time {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.history-jd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.history-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 20%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-surface);
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+.history-toggle:hover {
+  box-shadow: var(--shadow-md);
+}
+
+@media screen and (max-width: 640px) {
+  .history-panel {
+    width: 100%;
+  }
+}

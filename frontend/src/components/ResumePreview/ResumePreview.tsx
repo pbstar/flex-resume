@@ -1,12 +1,14 @@
 import type { AdaptedResume } from "../../types";
+import "./ResumePreview.css";
 import { SimpleTemplate } from "../../templates/simple/SimpleTemplate";
 import { BusinessTemplate } from "../../templates/business/BusinessTemplate";
 import { CreativeTemplate } from "../../templates/creative/CreativeTemplate";
-import "./TemplateRenderer.css";
 
 interface Props {
   data: AdaptedResume | null;
   templateId: string;
+  loading: boolean;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 const TEMPLATES: Record<
@@ -18,7 +20,7 @@ const TEMPLATES: Record<
   creative: CreativeTemplate,
 };
 
-export function TemplateRenderer({ data, templateId }: Props) {
+export function ResumePreview({ data, templateId, loading, ref }: Props) {
   if (!data) {
     return (
       <div className="preview-placeholder">
@@ -30,8 +32,20 @@ export function TemplateRenderer({ data, templateId }: Props) {
   const Template = TEMPLATES[templateId] || SimpleTemplate;
 
   return (
-    <div className="template-container">
+    <div className="preview-wrapper" ref={ref}>
       <Template data={data} />
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-area">
+            <div className="loading-dots">
+              <span />
+              <span />
+              <span />
+            </div>
+            <p>AI 正在分析 JD、筛选匹配技能与项目、优化描述…</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
