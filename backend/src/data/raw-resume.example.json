@@ -94,14 +94,5 @@
     "自我评价1：突出技术能力或业务理解",
     "自我评价2：突出团队协作或管理能力",
     "自我评价3：突出个人特质或成就"
-  ],
-  "extras": {
-    "certifications": [],
-    "languages": [
-      "普通话",
-      "英语 CET-4"
-    ],
-    "expectedSalary": null,
-    "availability": "随时到岗"
-  }
+  ]
 }

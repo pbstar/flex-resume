@@ -49,12 +49,6 @@ export interface AdaptedResume {
     endDate: string;
   }[];
   selfEvaluation: string[];
-  extras: {
-    certifications: string[];
-    languages: string[];
-    expectedSalary: string | null;
-    availability: string;
-  };
 }
 
 export interface Greeting {
