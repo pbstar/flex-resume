@@ -29,7 +29,6 @@ export function JDInput({
   const [showGreetingConfig, setShowGreetingConfig] = useState(false);
 
   const [resumeLength, setResumeLength] = useState("1页");
-  const [resumeFocus, setResumeFocus] = useState<ResumeConfig["focus"]>("综合");
   const [resumeStyle, setResumeStyle] = useState<ResumeConfig["style"]>("专业");
 
   const [greetingCount, setGreetingCount] = useState(3);
@@ -43,7 +42,6 @@ export function JDInput({
       e.preventDefault();
       onGenerateResume(jd, {
         length: resumeLength,
-        focus: resumeFocus,
         style: resumeStyle,
       });
     }
@@ -155,7 +153,6 @@ export function JDInput({
             onClick={() =>
               onGenerateResume(jd, {
                 length: resumeLength,
-                focus: resumeFocus,
                 style: resumeStyle,
               })
             }
@@ -182,19 +179,6 @@ export function JDInput({
                       {n}
                     </option>
                   ))}
-                </select>
-              </label>
-              <label>
-                侧重点
-                <select
-                  value={resumeFocus}
-                  onChange={(e) =>
-                    setResumeFocus(e.target.value as ResumeConfig["focus"])
-                  }
-                >
-                  <option value="综合">综合</option>
-                  <option value="项目经验优先">项目经验优先</option>
-                  <option value="技能优先">技能优先</option>
                 </select>
               </label>
               <label>

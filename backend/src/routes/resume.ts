@@ -22,7 +22,6 @@ resumeRouter.post("/generate", async (req: Request, res: Response) => {
     rawResume: RAW_RESUME,
     config: {
       length: "一页",
-      focus: "综合",
       style: "专业",
       ...config,
     },

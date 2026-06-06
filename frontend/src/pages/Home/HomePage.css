@@ -150,13 +150,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
+  z-index: 1;
   border-radius: var(--radius-md);
 }
 
 /* ====== 底栏 ====== */
 .home-footer {
   position: sticky;
+  z-index: 2;
   bottom: 0;
   display: flex;
   justify-content: space-between;

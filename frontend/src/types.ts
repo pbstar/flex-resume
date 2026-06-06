@@ -64,7 +64,6 @@ export interface Greeting {
 
 export interface ResumeConfig {
   length: string; // '1页' ~ '5页'
-  focus: "项目经验优先" | "技能优先" | "综合";
   style: "专业" | "亲和" | "简洁";
 }
 
