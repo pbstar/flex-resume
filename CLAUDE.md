@@ -83,7 +83,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-AI 灵活简历工具 — 输入目标岗位 JD，AI 自动筛选和改写候选人简历内容，生成高度适配该岗位的定制简历，支持多模板预览和一键导出 PDF。
+AI 弹性简历工具 — 输入目标岗位 JD，AI 自动筛选和改写候选人简历内容，生成高度适配该岗位的定制简历，支持多模板预览和一键导出 PDF。
 
 ### 目录结构
 
