@@ -11,23 +11,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
-  background: #1e293b;
-  color: #fff;
+  padding: 28px 40px 20px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .biz-header h1 {
   font-size: 30px;
   font-weight: 700;
   margin: 0 0 4px 0;
-  color: #fff;
+  color: #1e293b;
   border: none;
   padding: 0;
 }
 
 .biz-title {
-  font-size: 16px;
-  opacity: 0.85;
+  font-size: 15px;
+  color: #64748b;
   margin: 0;
 }
 
@@ -35,6 +34,7 @@
   text-align: right;
   font-size: 13px;
   line-height: 2;
+  color: #64748b;
 }
 
 .biz-header-right span {
@@ -51,8 +51,8 @@
 .biz-sidebar {
   width: 220px;
   flex-shrink: 0;
-  background: #f1f5f9;
   padding: 24px 20px;
+  border-right: 1px solid #e2e8f0;
 }
 
 .biz-sidebar .biz-section {
@@ -60,11 +60,11 @@
 }
 
 .biz-sidebar h3 {
-  font-size: 15px;
+  font-size: 14px;
   color: #1e293b;
-  margin: 0 0 12px 0;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #1e293b;
+  margin: 0 0 10px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #1e293b;
 }
 
 .biz-info-list {
@@ -85,7 +85,7 @@
 }
 
 .biz-skill-block {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .biz-skill-cat {
@@ -105,8 +105,8 @@
   display: inline-block;
   padding: 1px 7px;
   font-size: 11px;
-  color: #1e293b;
-  background: #cbd5e1;
+  color: #475569;
+  background: #f1f5f9;
   border-radius: 3px;
 }
 

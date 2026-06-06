@@ -1,207 +1,275 @@
-/* ========== 创意风：现代活泼，卡片布局 ========== */
+/* ========== 创意风：轻盈现代 ========== */
 
 .creative-template {
-  color: #0f172a;
+  color: #334155;
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.75;
+  padding: 36px 44px;
 }
 
-/* 顶部 */
-.ct-header-bar {
-  height: 4px;
-  background: #1e293b;
+/* ── 头部 ── */
+.ct-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #1e293b;
 }
 
-.ct-header-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 30px 16px;
-  background: #f8fafc;
-}
-
-.ct-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #1e293b;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ct-header-content h1 {
-  font-size: 26px;
+.ct-header h1 {
+  font-size: 32px;
+  font-weight: 800;
   color: #1e293b;
-  margin: 0;
-  border: none;
-  padding: 0;
+  margin: 0 0 6px 0;
+  letter-spacing: 2px;
 }
 
-.ct-role {
-  font-size: 15px;
+.ct-title {
+  font-size: 16px;
   color: #0284c7;
-  margin: 0;
+  font-weight: 500;
+  margin: 0 0 14px 0;
 }
 
-.ct-contact {
-  display: flex;
-  gap: 20px;
-  padding: 8px 30px 16px;
-  background: #f8fafc;
+.ct-meta-row {
   font-size: 13px;
   color: #94a3b8;
-  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 6px;
 }
 
-/* 主体 */
-.ct-body {
-  padding: 24px 30px;
+.ct-contact-row {
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  justify-content: center;
+  gap: 0;
 }
 
+.ct-dot {
+  margin: 0 10px;
+  color: #cbd5e1;
+}
+
+/* ── 章节标题 ── */
 .ct-section {
   margin-bottom: 28px;
 }
 
 .ct-section h2 {
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 700;
   color: #1e293b;
-  margin: 0 0 14px 0;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #1e293b;
-  display: inline-block;
+  margin: 0 0 16px 0;
+  padding-left: 12px;
+  border-left: 3px solid #1e293b;
 }
 
-/* 技能云 */
+/* ── 技能 ── */
+.ct-skill-group {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .ct-skill-cat {
-  margin-bottom: 10px;
-}
-
-.ct-skill-label {
   font-size: 13px;
-  color: #0284c7;
   font-weight: 600;
-  margin-right: 8px;
+  color: #1e293b;
+  white-space: nowrap;
+  min-width: 72px;
 }
 
-.ct-tag-cloud {
+.ct-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
 }
 
-.ct-tag {
-  display: inline-block;
-  padding: 3px 12px;
+.ct-chip {
+  padding: 2px 10px;
   font-size: 12px;
-  color: #475569;
-  background: #f8fafc;
-  border-radius: 20px;
-  border: 1px solid #e2e8f0;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
 }
 
-.ct-tag-tech {
-  background: #f0f9ff;
+.ct-chip-tech {
   color: #0284c7;
-  font-weight: 500;
-  border-color: transparent;
+  border-color: #bae6fd;
 }
 
-/* 时间线卡片 */
+/* ── 时间线 ── */
 .ct-timeline {
+  padding-left: 4px;
+}
+
+.ct-tl-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+
+.ct-tl-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12px;
+  flex-shrink: 0;
+  padding-top: 7px;
+}
+
+.ct-tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #1e293b;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.ct-tl-line {
+  width: 2px;
+  flex: 1;
+  background: #e2e8f0;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.ct-tl-body {
+  flex: 1;
+  padding-bottom: 16px;
+}
+
+.ct-tl-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.ct-tl-head h3 {
+  font-size: 15px;
+  color: #1e293b;
+  margin: 0;
+}
+
+.ct-tl-role {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.ct-tl-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.ct-desc {
+  color: #475569;
+  margin: 4px 0 6px;
+}
+
+.ct-tl-body ul {
+  padding-left: 18px;
+  margin: 0;
+  color: #475569;
+}
+
+.ct-tl-body ul li {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* ── 项目卡片 ── */
+.ct-projects {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.ct-card {
+.ct-proj-card {
   padding: 16px 20px;
-  background: #fff;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-left: 3px solid #1e293b;
+  border-radius: 0 8px 8px 0;
 }
 
-.ct-card h3 {
+.ct-proj-top {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ct-proj-top h3 {
   font-size: 15px;
   color: #1e293b;
-  margin: 0 0 4px 0;
-}
-
-.ct-card-meta {
-  margin-bottom: 4px;
-}
-
-.ct-card-date {
-  font-size: 12px;
-  color: #94a3b8;
-}
-
-.ct-card-sub {
-  font-size: 13px;
-  color: #94a3b8;
-  margin: 0 0 6px 0;
-}
-
-.ct-card-desc {
-  color: #475569;
-  margin: 8px 0 0 0;
-}
-
-.ct-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ct-platform {
-  font-size: 12px;
-  color: #0284c7;
-}
-
-/* 项目网格 */
-.ct-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.ct-project-card {
-  border-left: 3px solid #1e293b;
-}
-
-/* 底部双栏 */
-.ct-bottom-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.ct-edu-item {
-  margin-bottom: 10px;
-}
-
-.ct-edu-item strong {
-  display: block;
-  color: #1e293b;
-}
-
-.ct-edu-item p {
-  font-size: 13px;
-  color: #94a3b8;
   margin: 0;
 }
 
-.ct-list {
-  padding-left: 18px;
-  margin: 6px 0 0 0;
+.ct-proj-company {
+  font-size: 12px;
+  color: #94a3b8;
 }
 
-.ct-list li {
-  font-size: 13px;
+.ct-proj-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.ct-proj-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.ct-proj-card ul {
+  padding-left: 18px;
+  margin: 4px 0 0;
   color: #475569;
-  margin-bottom: 3px;
+}
+
+.ct-proj-card ul li {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* ── 底栏 ── */
+.ct-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.ct-edu {
+  margin-bottom: 10px;
+}
+
+.ct-edu strong {
+  display: block;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.ct-edu p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 2px 0 0;
+}
+
+.ct-bottom ul {
+  padding-left: 18px;
+  margin: 0;
+  color: #475569;
+}
+
+.ct-bottom ul li {
+  font-size: 13px;
+  margin-bottom: 4px;
 }

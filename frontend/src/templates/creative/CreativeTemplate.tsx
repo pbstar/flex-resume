@@ -8,126 +8,116 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
   return (
     <div className="resume creative-template">
       <style>{ctCSS}</style>
-      {/* 顶部渐变条 */}
+
+      {/* 头部 */}
       <header className="ct-header">
-        <div className="ct-header-bar" />
-        <div className="ct-header-content">
-          <div className="ct-avatar">{basic.name.charAt(0)}</div>
-          <div>
-            <h1>{basic.name}</h1>
-            <p className="ct-role">{basic.title}</p>
-          </div>
+        <h1>{basic.name}</h1>
+        <p className="ct-title">{basic.title}</p>
+        <div className="ct-meta-row">
+          <span>{basic.gender} · {basic.age}岁 · {basic.education} · {basic.yearsOfExperience}年经验</span>
         </div>
-        <div className="ct-contact">
+        <div className="ct-contact-row">
           <span>{basic.phone}</span>
+          <span className="ct-dot">·</span>
           <span>{basic.email}</span>
+          <span className="ct-dot">·</span>
           <span>{basic.github}</span>
         </div>
       </header>
 
-      <div className="ct-body">
-        {/* 技能云 */}
-        <section className="ct-section">
-          <h2>专业技能</h2>
-          {skills.map((s) => (
-            <div key={s.category} className="ct-skill-cat">
-              <span className="ct-skill-label">{s.category}</span>
-              <div className="ct-tag-cloud">
-                {s.tags.map((t) => (
-                  <span key={t} className="ct-tag">
-                    {t}
-                  </span>
-                ))}
+      {/* 技能 — 标签云 */}
+      <section className="ct-section">
+        <h2>专业技能</h2>
+        {skills.map((s) => (
+          <div key={s.category} className="ct-skill-group">
+            <span className="ct-skill-cat">{s.category}</span>
+            <div className="ct-chips">
+              {s.tags.map((t) => (
+                <span key={t} className="ct-chip">{t}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* 工作经历 — 时间线 */}
+      <section className="ct-section">
+        <h2>工作经历</h2>
+        <div className="ct-timeline">
+          {workExperience.map((w, i) => (
+            <div key={w.id} className="ct-tl-item">
+              <div className="ct-tl-marker">
+                <span className="ct-tl-dot" />
+                {i < workExperience.length - 1 && <span className="ct-tl-line" />}
+              </div>
+              <div className="ct-tl-body">
+                <div className="ct-tl-head">
+                  <h3>{w.company}</h3>
+                  <span className="ct-tl-role">{w.position}</span>
+                  <span className="ct-tl-date">{w.startDate} — {w.endDate}</span>
+                </div>
+                {w.description && <p className="ct-desc">{w.description}</p>}
+                {w.highlights.length > 0 && (
+                  <ul>
+                    {w.highlights.map((h, j) => (
+                      <li key={j}>{h}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ))}
-        </section>
-
-        {/* 工作经历 — 卡片式 */}
-        <section className="ct-section">
-          <h2>工作经历</h2>
-          <div className="ct-timeline">
-            {workExperience.map((w) => (
-              <div key={w.id} className="ct-card">
-                <div className="ct-card-meta">
-                  <span className="ct-card-date">
-                    {w.startDate} - {w.endDate}
-                  </span>
-                </div>
-                <h3>
-                  {w.company} · {w.position}
-                </h3>
-                {w.description && <p>{w.description}</p>}
-                {w.highlights.length > 0 && (
-                  <ul className="ct-list">
-                    {w.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 项目经验 */}
-        <section className="ct-section">
-          <h2>项目经验</h2>
-          <div className="ct-grid">
-            {projects.map((p) => (
-              <div key={p.id} className="ct-card ct-project-card">
-                <div className="ct-card-top">
-                  <h3>{p.name}</h3>
-                  <span className="ct-platform">
-                    {p.platform === "Mobile" ? "📱 移动端" : "🖥 PC端"}
-                  </span>
-                </div>
-                <p className="ct-card-sub">
-                  {p.company} · {p.startDate} - {p.endDate}
-                </p>
-                <div className="ct-tag-cloud ct-tech-tags">
-                  {p.techStack.map((t) => (
-                    <span key={t} className="ct-tag ct-tag-tech">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <p className="ct-card-desc">{p.description}</p>
-                {p.responsibilities.length > 0 && (
-                  <ul className="ct-list">
-                    {p.responsibilities.map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 教育 + 自我评价 */}
-        <div className="ct-bottom-row">
-          <section className="ct-section ct-half">
-            <h2>教育背景</h2>
-            {education.map((e, i) => (
-              <div key={i} className="ct-edu-item">
-                <strong>{e.school}</strong>
-                <p>
-                  {e.major} · {e.degree} · {e.startDate} - {e.endDate}
-                </p>
-              </div>
-            ))}
-          </section>
-
-          <section className="ct-section ct-half">
-            <h2>自我评价</h2>
-            <ul className="ct-list">
-              {selfEvaluation.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </ul>
-          </section>
         </div>
+      </section>
+
+      {/* 项目经验 — 卡片 */}
+      <section className="ct-section">
+        <h2>项目经验</h2>
+        <div className="ct-projects">
+          {projects.map((p) => (
+            <div key={p.id} className="ct-proj-card">
+              <div className="ct-proj-top">
+                <h3>{p.name}</h3>
+                <span className="ct-proj-company">{p.company}</span>
+                <span className="ct-proj-date">{p.startDate} — {p.endDate}</span>
+              </div>
+              <div className="ct-proj-tech">
+                {p.techStack.map((t) => (
+                  <span key={t} className="ct-chip ct-chip-tech">{t}</span>
+                ))}
+              </div>
+              <p className="ct-desc">{p.description}</p>
+              {p.responsibilities.length > 0 && (
+                <ul>
+                  {p.responsibilities.map((r, j) => (
+                    <li key={j}>{r}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 教育 + 自我评价 */}
+      <div className="ct-bottom">
+        <section className="ct-section ct-half">
+          <h2>教育背景</h2>
+          {education.map((e, i) => (
+            <div key={i} className="ct-edu">
+              <strong>{e.school}</strong>
+              <p>{e.major} · {e.degree} · {e.startDate} — {e.endDate}</p>
+            </div>
+          ))}
+        </section>
+        <section className="ct-section ct-half">
+          <h2>自我评价</h2>
+          <ul>
+            {selfEvaluation.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );
