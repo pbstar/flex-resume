@@ -63,8 +63,6 @@ cd frontend && npm run dev
 5. 切换底部模板风格查看不同排版效果
 6. 点击 **「导出 PDF」** → 下载 A4 排版 PDF
 
-> 快捷键：`Ctrl+Enter`（Mac: `Cmd+Enter`）快速生成简历
-
 ## 项目结构
 
 ```

@@ -37,16 +37,6 @@ export function JDInput({
   const [greetingMaxWords, setGreetingMaxWords] =
     useState<GreetingConfig["maxWords"]>("50-150字");
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-      e.preventDefault();
-      onGenerateResume(jd, {
-        length: resumeLength,
-        style: resumeStyle,
-      });
-    }
-  };
-
   const isEmpty = !jd.trim();
 
   return (
@@ -57,11 +47,10 @@ export function JDInput({
             岗位描述 (JD) <span className="jd-optional">必填</span>
           </label>
           <textarea
-            placeholder="粘贴目标岗位的职位描述，Ctrl+Enter 快速生成简历"
+            placeholder="粘贴目标岗位的职位描述"
             rows={5}
             value={jd}
             onChange={(e) => onJdChange(e.target.value)}
-            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="jd-field">
