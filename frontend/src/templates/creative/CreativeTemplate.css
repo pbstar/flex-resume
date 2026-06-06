@@ -1,9 +1,6 @@
 /* ========== 创意风：现代活泼，卡片布局 ========== */
 
 .creative-template {
-  max-width: 800px;
-  background-color: #fff;
-  margin: 0 auto;
   color: #0f172a;
   font-size: 14px;
   line-height: 1.8;
@@ -207,41 +204,4 @@
   font-size: 13px;
   color: #475569;
   margin-bottom: 3px;
-}
-
-/* 响应式 */
-@media screen and (max-width: 640px) {
-  .ct-grid {
-    grid-template-columns: 1fr;
-  }
-  .ct-bottom-row {
-    grid-template-columns: 1fr;
-  }
-  .ct-contact {
-    flex-direction: column;
-    gap: 4px;
-  }
-  .ct-header-content {
-    padding: 16px;
-  }
-  .ct-body {
-    padding: 16px;
-  }
-}
-
-@media print {
-  @page {
-    size: A4;
-    margin: 0.8cm 0 0.5cm;
-  }
-  .creative-template {
-    max-width: 100%;
-  }
-  .ct-card {
-    break-inside: avoid;
-  }
-  .ct-header-bar {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
 }

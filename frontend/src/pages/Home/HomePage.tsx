@@ -131,11 +131,13 @@ export function HomePage() {
 
       {/* 简历预览 */}
       <main className="home-main container">
-        <div ref={templateRef}>
-          <TemplateRenderer
-            data={resume.adaptedResume}
-            templateId={templateId}
-          />
+        <div className="preview-wrapper">
+          <div ref={templateRef}>
+            <TemplateRenderer
+              data={resume.adaptedResume}
+              templateId={templateId}
+            />
+          </div>
         </div>
 
         {resume.loading && (

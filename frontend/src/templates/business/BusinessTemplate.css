@@ -1,8 +1,6 @@
 /* ========== 商务风：专业稳重，左右分栏 ========== */
 
 .business-template {
-  max-width: 800px;
-  margin: 0 auto;
   color: #0f172a;
   font-size: 14px;
   line-height: 1.8;
@@ -199,36 +197,4 @@
 
 .biz-main ul li {
   margin-bottom: 2px;
-}
-
-/* 响应式 */
-@media screen and (max-width: 640px) {
-  .biz-body {
-    flex-direction: column;
-  }
-  .biz-sidebar {
-    width: 100%;
-  }
-  .biz-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-    padding: 20px;
-  }
-  .biz-header-right {
-    text-align: center;
-  }
-  .biz-block-head {
-    flex-wrap: wrap;
-  }
-}
-
-@media print {
-  @page {
-    size: A4;
-    margin: 0.8cm 0 0.5cm;
-  }
-  .business-template {
-    max-width: 100%;
-  }
 }

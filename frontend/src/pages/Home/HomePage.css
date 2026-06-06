@@ -136,9 +136,18 @@
 
 /* ====== 主体 ====== */
 .home-main {
-  min-height: 400px;
+  min-height: 300px;
   position: relative;
   padding: 20px 12px;
+  overflow-x: auto;
+}
+
+.preview-wrapper {
+  width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 /* ====== Loading 遮罩 ====== */

@@ -2,11 +2,11 @@ import type { AdaptedResume } from "../../types";
 import { SimpleTemplate } from "../../templates/simple/SimpleTemplate";
 import { BusinessTemplate } from "../../templates/business/BusinessTemplate";
 import { CreativeTemplate } from "../../templates/creative/CreativeTemplate";
+import "./TemplateRenderer.css";
 
 interface Props {
   data: AdaptedResume | null;
   templateId: string;
-  ref?: React.Ref<HTMLDivElement>;
 }
 
 const TEMPLATES: Record<
@@ -18,7 +18,7 @@ const TEMPLATES: Record<
   creative: CreativeTemplate,
 };
 
-export function TemplateRenderer({ data, templateId, ref }: Props) {
+export function TemplateRenderer({ data, templateId }: Props) {
   if (!data) {
     return (
       <div className="preview-placeholder">
@@ -30,7 +30,7 @@ export function TemplateRenderer({ data, templateId, ref }: Props) {
   const Template = TEMPLATES[templateId] || SimpleTemplate;
 
   return (
-    <div ref={ref} className="template-container">
+    <div className="template-container">
       <Template data={data} />
     </div>
   );
