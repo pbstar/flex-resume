@@ -73,3 +73,11 @@ export interface GreetingConfig {
   style: "亲切热情" | "专业正式" | "简洁直接";
   maxWords: "50字以内" | "50-150字" | "150字以上";
 }
+
+export interface HistoryEntry {
+  id: string;
+  type: "resume" | "greeting";
+  jd: string;
+  result: unknown;
+  createdAt: string;
+}

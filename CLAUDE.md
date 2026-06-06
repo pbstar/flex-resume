@@ -2,18 +2,84 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## CLAUDE 十荣十耻
+## CLAUDE 工作原则
 
-- 以中文输出为荣，以英文交互为耻
-- 以最新版本为荣，以过失扩展为耻
-- 以清晰可读为荣，以晦涩难懂为耻
-- 以简洁优雅为荣，以繁复冗余为耻
-- 以封装复用为荣，以重复造轮为耻
-- 以确定可靠为荣，以猜测含糊为耻
-- 以顾全整体为荣，以局部短视为耻
-- 以遵循规范为荣，以破坏架构为耻
-- 以人类确认为荣，以擅自执行为耻
-- 以主动测试为荣，以跳过验证为耻
+### 工作前 · 思考先于行动
+
+**1. 沟通语言**
+
+- 始终使用中文与人类交互，确保沟通零障碍。
+
+**2. 计划先行**
+
+- 动手前先梳理思路，制定清晰计划。
+- 向人类同步方案概要，对齐预期后再执行，避免方向性返工。
+
+**3. 全局视角**
+
+- 修改代码须先理解整体架构，评估改动影响面。
+- 不因局部需求破坏模块边界、引入耦合或技术债。
+
+**4. 依赖选择**
+
+- 第三方插件与包优先选用最新稳定版。
+- 引入新依赖前确认必要性、维护状态与兼容性。
+
+**5. 文档优先**
+
+- 遇到技术疑问先查阅对应技术栈的官方文档或项目已有文档。
+- 文档明确后再动手，不基于模糊记忆或推测编码。
+
+**6. 不确定必问**
+
+- 遇到需求模糊、边界不清、多种可行方案时，必须向人类确认。
+- 绝不猜测、不臆断、不擅自做主，宁可多问一句，不埋一颗雷。
+
+### 工作中 · 质量建于细节
+
+**1. 代码简洁**
+
+- 追求代码清晰易读、结构扁平和逻辑直观。
+- 避免过度设计、冗余抽象和炫技写法。
+- 写好注释，解释“为什么”而非“做了什么”。
+
+**2. 界面清晰**
+
+- 页面设计遵循简洁清晰原则，参考 Google Material Design 风格。
+- 信息层级分明，操作路径短，视觉噪音少。
+
+**3. 复用优先**
+
+- 多处出现相同或相似逻辑，及时封装为可复用组件/函数/工具方法。
+- 复用粒度适中，不强行抽象，保持灵活与简单的平衡。
+
+**4. 规范一致**
+
+- 严格遵循项目已有的代码风格、命名规范、目录结构和架构约定。
+- 新代码应与既有代码库浑然一体，而非自成风格。
+
+### 工作后 · 交付即负责
+
+**1. 主动测试**
+
+- 功能完成后主动进行测试验证，覆盖正常路径与典型边界情况。
+- 发现潜在关联影响一并验证，不只测“自己改的那一行”。
+
+**2. 主动优化**
+
+- 回看已完成代码，检查是否有可精简、可合并、可提升性能之处。
+- 在不影响稳定性的前提下持续打磨，力求“完成且出色”。
+
+**3. 主动反馈**
+
+- 完成后向人类简明汇报：做了哪些改动、原因是什么、有无需要注意的地方。
+- 若发现设计缺陷、潜在风险或更好的实现思路，主动提出建议供人类决策。
+
+### 核心精神
+
+**把每一次交互当作真实的工程协作：思考严谨、执行到位、交付负责。做人类最可靠的 AI 搭档，而非一个只会写代码的工具。**
+
+---
 
 ## 项目概述
 
@@ -30,11 +96,11 @@ resume/
 │   │   │   ├── resume.ts    # POST /api/resume/generate  简历生成
 │   │   │   ├── greeting.ts  # POST /api/greeting/generate 话术生成
 │   │   │   ├── pdf.ts       # POST /api/pdf/export        PDF 导出
-│   │   │   ├── history.ts   # GET/POST /api/history       生成历史
+│   │   │   ├── history.ts   # GET /api/history + POST /api/history/save  生成历史
 │   │   │   └── templates.ts # GET /api/templates          模板列表
-│   │   ├── agents/
-│   │   │   ├── resume-agent.ts    # 简历组装 Agent
-│   │   │   └── greeting-agent.ts  # 打招呼话术 Agent
+│   │   ├── middleware/
+│   │   │   ├── error-handler.ts  # 全局错误处理中间件
+│   │   │   └── logger.ts        # 请求日志中间件
 │   │   ├── prompts/
 │   │   │   ├── resume-prompt.ts   # 简历 Agent 系统 Prompt
 │   │   │   └── greeting-prompt.ts # 话术 Agent 系统 Prompt
@@ -56,7 +122,13 @@ resume/
 │   ├── src/
 │   │   ├── main.tsx        # 应用入口
 │   │   ├── App.tsx         # 路由配置 + ErrorBoundary
-│   │   ├── config.ts       # API 基地址配置
+│   │   ├── api/
+│   │   │   └── index.ts    # API 层封装
+│   │   ├── hooks/
+│   │   │   ├── useResume.ts     # 简历生成
+│   │   │   ├── useGreeting.ts   # 话术生成
+│   │   │   ├── useHistory.ts    # 历史记录
+│   │   │   └── usePDFExport.ts  # PDF 导出
 │   │   ├── types.ts        # 类型定义（AdaptedResume, Greeting 等）
 │   │   ├── vite-env.d.ts   # Vite 环境变量类型声明
 │   │   ├── pages/
@@ -121,7 +193,7 @@ resume/
 | POST | /api/greeting/generate | 生成打招呼话术            |
 | POST | /api/pdf/export        | 导出 PDF（接收 HTML+CSS） |
 | GET  | /api/history           | 获取最近 20 条历史记录    |
-| POST | /api/history           | 保存一条历史记录          |
+| POST | /api/history/save      | 保存一条历史记录          |
 
 ## 开发命令
 
@@ -143,8 +215,8 @@ cd frontend && npm run build  # Vite 生产构建
 
 - Express 5 异步路由，注意 Express 5 中 `req.body` 已经是 `unknown` 类型，需显式解构
 - 路由文件导出 `export const xxxRouter = Router()`，由 `index.ts` 统一挂载
-- Agent 统一在 `mastra.config.ts` 注册，路由通过 `mastra.getAgent(name)` 获取
-- Prompt 模板单独放在 `prompts/` 目录，Agent 只引用不内嵌
+- LLM 调用统一使用 `src/services/llm.ts` 中的 `deepseekChat()` 函数
+- Prompt 模板单独放在 `prompts/` 目录，路由层只引用不内嵌
 - 使用 `src/utils/paths.ts` 中的路径工具函数，不要在多个文件中重复 `dirname(fileURLToPath(...))`
 
 ### 前端

@@ -1,163 +1,78 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef } from "react";
 import { JDInput } from "../../components/JDInput/JDInput";
 import { TemplateRenderer } from "../../components/TemplateRenderer/TemplateRenderer";
 import { useToast } from "../../components/Toast/ToastProvider";
-import type {
-  AdaptedResume,
-  Greeting,
-  ResumeConfig,
-  GreetingConfig,
-} from "../../types";
+import { useResume } from "../../hooks/useResume";
+import { useGreeting } from "../../hooks/useGreeting";
+import { useHistory } from "../../hooks/useHistory";
+import { usePDFExport } from "../../hooks/usePDFExport";
+import type { ResumeConfig, GreetingConfig, HistoryEntry } from "../../types";
 import "./HomePage.css";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-
-interface HistoryEntry {
-  id: string;
-  type: "resume" | "greeting";
-  jd: string;
-  result: unknown;
-  createdAt: string;
-}
 
 export function HomePage() {
   const [jd, setJd] = useState("");
   const [companyIntro, setCompanyIntro] = useState("");
-  const [adaptedResume, setAdaptedResume] = useState<AdaptedResume | null>(
-    null,
-  );
-  const [greetings, setGreetings] = useState<Greeting[]>([]);
-  const [loading, setLoading] = useState<"resume" | "greeting" | null>(null);
-  const [exportingPDF, setExportingPDF] = useState(false);
   const [templateId, setTemplateId] = useState("simple");
-  const { toast } = useToast();
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [showHistory, setShowHistory] = useState(false);
-
   const templateRef = useRef<HTMLDivElement>(null);
 
-  // 加载历史记录
-  const loadHistory = useCallback(async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/history`);
-      const data = await res.json();
-      setHistory(data.entries || []);
-    } catch {
-      // 静默失败
-    }
-  }, []);
+  const resume = useResume();
+  const greeting = useGreeting();
+  const history = useHistory();
+  const pdf = usePDFExport(resume.adaptedResume);
+  const { toast } = useToast();
 
-  useEffect(() => {
-    loadHistory();
-  }, [loadHistory]);
+  // 加载指示：任一正在生成即为 true
+  const isBusy = resume.loading || greeting.loading;
 
-  // 恢复历史记录
-  const restoreHistory = (entry: HistoryEntry) => {
-    setJd(entry.jd);
-    if (entry.type === "resume") {
-      setAdaptedResume(entry.result as AdaptedResume);
-      setGreetings([]);
-    } else {
-      setGreetings(entry.result as Greeting[]);
-      setAdaptedResume(null);
-    }
-    setShowHistory(false);
-  };
-
+  // 生成简历
   const handleGenerateResume = async (jdText: string, config: ResumeConfig) => {
-    setLoading("resume");
     try {
-      const res = await fetch(`${API_BASE_URL}/api/resume/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jd: jdText, config }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || data.error || "请求失败");
-      setAdaptedResume(data.adaptedResume);
-
-      // 保存历史
-      fetch(`${API_BASE_URL}/api/history`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "resume",
-          jd: jdText,
-          result: data.adaptedResume,
-        }),
-      }).catch(() => {});
-      loadHistory();
+      const result = await resume.generate(jdText, config);
+      if (result) {
+        history.save("resume", jdText, result);
+      }
     } catch (err: unknown) {
       toast(err instanceof Error ? err.message : "请求失败", "error");
-    } finally {
-      setLoading(null);
     }
   };
 
+  // 生成话术
   const handleGenerateGreeting = async (
     jdText: string,
     company: string,
     config: GreetingConfig,
   ) => {
-    setLoading("greeting");
     try {
-      const res = await fetch(`${API_BASE_URL}/api/greeting/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          jd: jdText,
-          companyIntro: company || undefined,
-          config,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || data.error || "请求失败");
-      setGreetings(data.greetings || []);
-
-      // 保存历史
-      fetch(`${API_BASE_URL}/api/history`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "greeting",
-          jd: jdText,
-          result: data.greetings,
-        }),
-      }).catch(() => {});
-      loadHistory();
+      const result = await greeting.generate(jdText, company, config);
+      if (result) {
+        history.save("greeting", jdText, result);
+      }
     } catch (err: unknown) {
       toast(err instanceof Error ? err.message : "请求失败", "error");
-    } finally {
-      setLoading(null);
     }
   };
 
-  const exportPDF = async () => {
+  // 导出 PDF
+  const handleExportPDF = async () => {
     if (!templateRef.current) return;
-    setExportingPDF(true);
     try {
-      // HTML 已自带模板 <style> 标签，无需额外收集 CSS
-      const html = templateRef.current.innerHTML;
-
-      const res = await fetch(`${API_BASE_URL}/api/pdf/export`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ html }),
-      });
-      if (!res.ok) throw new Error("PDF 导出失败");
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      const name = adaptedResume?.basic?.name || "简历";
-      a.download = `${name}_简历.pdf`;
-      a.click();
-      URL.revokeObjectURL(url);
+      await pdf.download(templateRef.current.innerHTML);
     } catch (err: unknown) {
       toast(err instanceof Error ? err.message : "PDF 导出失败", "error");
-    } finally {
-      setExportingPDF(false);
     }
+  };
+
+  // 恢复历史记录
+  const handleRestore = (entry: HistoryEntry) => {
+    setJd(entry.jd);
+    if (entry.type === "resume") {
+      resume.setAdaptedResume(entry.result as typeof resume.adaptedResume);
+      greeting.clear();
+    } else {
+      greeting.setGreetings(entry.result as typeof greeting.greetings);
+      resume.clear();
+    }
+    history.close();
   };
 
   return (
@@ -171,45 +86,59 @@ export function HomePage() {
           onCompanyIntroChange={setCompanyIntro}
           onGenerateResume={handleGenerateResume}
           onGenerateGreeting={handleGenerateGreeting}
-          loading={loading}
+          loading={isBusy ? (resume.loading ? "resume" : "greeting") : null}
         />
       </header>
 
       {/* 话术结果 */}
-      {greetings.length > 0 && (
+      {(greeting.greetings.length > 0 || greeting.loading) && (
         <section className="greeting-section container">
           <h3>💬 打招呼话术</h3>
-          <div className="greeting-list">
-            {greetings.map((g, i) => (
-              <div key={i} className="greeting-card">
-                <div className="greeting-top">
-                  <span className="greeting-label">{g.label}</span>
-                  <button
-                    className="btn-copy-sm"
-                    onClick={() => {
-                      navigator.clipboard.writeText(g.text).then(
-                        () => toast("已复制到剪贴板", "success"),
-                        () => toast("复制失败", "error"),
-                      );
-                    }}
-                  >
-                    复制
-                  </button>
-                </div>
-                <p>{g.text}</p>
+          {greeting.loading ? (
+            <div className="loading-area loading-sm">
+              <div className="loading-dots">
+                <span />
+                <span />
+                <span />
               </div>
-            ))}
-          </div>
+              <p>AI 正在为你生成多风格打招呼话术…</p>
+            </div>
+          ) : (
+            <div className="greeting-list">
+              {greeting.greetings.map((g, i) => (
+                <div key={i} className="greeting-card">
+                  <div className="greeting-top">
+                    <span className="greeting-label">{g.label}</span>
+                    <button
+                      className="btn-copy-sm"
+                      onClick={() => {
+                        navigator.clipboard.writeText(g.text).then(
+                          () => toast("已复制到剪贴板", "success"),
+                          () => toast("复制失败", "error"),
+                        );
+                      }}
+                    >
+                      复制
+                    </button>
+                  </div>
+                  <p>{g.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
       {/* 简历预览 */}
       <main className="home-main container">
         <div ref={templateRef}>
-          <TemplateRenderer data={adaptedResume} templateId={templateId} />
+          <TemplateRenderer
+            data={resume.adaptedResume}
+            templateId={templateId}
+          />
         </div>
 
-        {loading === "resume" && (
+        {resume.loading && (
           <div className="loading-overlay">
             <div className="loading-area">
               <div className="loading-dots">
@@ -226,30 +155,30 @@ export function HomePage() {
       {/* 历史记录按钮 */}
       <button
         className="history-toggle"
-        onClick={() => setShowHistory(!showHistory)}
+        onClick={history.toggle}
         title="生成历史"
       >
         🕐
       </button>
 
       {/* 历史记录面板 */}
-      {showHistory && (
-        <aside className="history-panel">
+      {history.showPanel && (
+        <aside className={`history-panel${history.closing ? " closing" : ""}`}>
           <div className="history-panel-header">
             <h3>生成历史</h3>
-            <button onClick={() => setShowHistory(false)}>✕</button>
+            <button onClick={history.close}>✕</button>
           </div>
-          {history.length === 0 ? (
+          {history.history.length === 0 ? (
             <p className="history-empty">
               暂无记录，生成简历或话术后会自动保存
             </p>
           ) : (
             <div className="history-list">
-              {history.map((entry) => (
+              {history.history.map((entry) => (
                 <div
                   key={entry.id}
                   className="history-item"
-                  onClick={() => restoreHistory(entry)}
+                  onClick={() => handleRestore(entry)}
                 >
                   <div className="history-meta">
                     <span
@@ -275,7 +204,7 @@ export function HomePage() {
       )}
 
       {/* 底栏 */}
-      {adaptedResume && (
+      {resume.adaptedResume && (
         <footer className="home-footer">
           <div className="footer-left">
             <span className="footer-label">模板风格</span>
@@ -291,10 +220,10 @@ export function HomePage() {
           <div className="footer-right">
             <button
               className="btn-pdf"
-              onClick={exportPDF}
-              disabled={exportingPDF}
+              onClick={handleExportPDF}
+              disabled={pdf.exporting}
             >
-              {exportingPDF ? "⏳ 导出中…" : "📥 导出 PDF"}
+              {pdf.exporting ? "⏳ 导出中…" : "📥 导出 PDF"}
             </button>
           </div>
         </footer>

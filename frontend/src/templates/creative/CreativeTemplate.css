@@ -4,15 +4,15 @@
   max-width: 800px;
   background-color: #fff;
   margin: 0 auto;
-  color: #444;
+  color: #0f172a;
   font-size: 14px;
   line-height: 1.8;
 }
 
 /* 顶部 */
 .ct-header-bar {
-  height: 6px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  height: 4px;
+  background: #1e293b;
 }
 
 .ct-header-content {
@@ -20,14 +20,14 @@
   align-items: center;
   gap: 16px;
   padding: 24px 30px 16px;
-  background: #fafbff;
+  background: #f8fafc;
 }
 
 .ct-avatar {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: #1e293b;
   color: #fff;
   font-size: 24px;
   font-weight: 700;
@@ -38,7 +38,7 @@
 
 .ct-header-content h1 {
   font-size: 26px;
-  color: #333;
+  color: #1e293b;
   margin: 0;
   border: none;
   padding: 0;
@@ -46,7 +46,7 @@
 
 .ct-role {
   font-size: 15px;
-  color: #667eea;
+  color: #0284c7;
   margin: 0;
 }
 
@@ -54,10 +54,10 @@
   display: flex;
   gap: 20px;
   padding: 8px 30px 16px;
-  background: #fafbff;
+  background: #f8fafc;
   font-size: 13px;
-  color: #777;
-  border-bottom: 1px solid #f0f0f5;
+  color: #94a3b8;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* 主体 */
@@ -71,10 +71,10 @@
 
 .ct-section h2 {
   font-size: 18px;
-  color: #333;
+  color: #1e293b;
   margin: 0 0 14px 0;
   padding-bottom: 6px;
-  border-bottom: 2px solid #667eea;
+  border-bottom: 2px solid #1e293b;
   display: inline-block;
 }
 
@@ -85,7 +85,7 @@
 
 .ct-skill-label {
   font-size: 13px;
-  color: #667eea;
+  color: #0284c7;
   font-weight: 600;
   margin-right: 8px;
 }
@@ -101,15 +101,17 @@
   display: inline-block;
   padding: 3px 12px;
   font-size: 12px;
-  color: #555;
-  background: #f0f0f8;
+  color: #475569;
+  background: #f8fafc;
   border-radius: 20px;
+  border: 1px solid #e2e8f0;
 }
 
 .ct-tag-tech {
-  background: linear-gradient(135deg, #eef0ff, #f3e8ff);
-  color: #667eea;
+  background: #f0f9ff;
+  color: #0284c7;
   font-weight: 500;
+  border-color: transparent;
 }
 
 /* 时间线卡片 */
@@ -122,13 +124,13 @@
 .ct-card {
   padding: 16px 20px;
   background: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
 }
 
 .ct-card h3 {
   font-size: 15px;
-  color: #333;
+  color: #1e293b;
   margin: 0 0 4px 0;
 }
 
@@ -138,17 +140,17 @@
 
 .ct-card-date {
   font-size: 12px;
-  color: #999;
+  color: #94a3b8;
 }
 
 .ct-card-sub {
   font-size: 13px;
-  color: #888;
+  color: #94a3b8;
   margin: 0 0 6px 0;
 }
 
 .ct-card-desc {
-  color: #555;
+  color: #475569;
   margin: 8px 0 0 0;
 }
 
@@ -160,7 +162,7 @@
 
 .ct-platform {
   font-size: 12px;
-  color: #667eea;
+  color: #0284c7;
 }
 
 /* 项目网格 */
@@ -171,7 +173,7 @@
 }
 
 .ct-project-card {
-  border-left: 3px solid #667eea;
+  border-left: 3px solid #1e293b;
 }
 
 /* 底部双栏 */
@@ -187,12 +189,12 @@
 
 .ct-edu-item strong {
   display: block;
-  color: #333;
+  color: #1e293b;
 }
 
 .ct-edu-item p {
   font-size: 13px;
-  color: #777;
+  color: #94a3b8;
   margin: 0;
 }
 
@@ -203,6 +205,7 @@
 
 .ct-list li {
   font-size: 13px;
+  color: #475569;
   margin-bottom: 3px;
 }
 

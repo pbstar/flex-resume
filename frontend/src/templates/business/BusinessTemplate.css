@@ -3,7 +3,7 @@
 .business-template {
   max-width: 800px;
   margin: 0 auto;
-  color: #333;
+  color: #0f172a;
   font-size: 14px;
   line-height: 1.8;
 }
@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px 40px;
-  background: #1a3a5c;
+  background: #1e293b;
   color: #fff;
 }
 
@@ -53,7 +53,7 @@
 .biz-sidebar {
   width: 220px;
   flex-shrink: 0;
-  background: #f4f6f9;
+  background: #f1f5f9;
   padding: 24px 20px;
 }
 
@@ -63,10 +63,10 @@
 
 .biz-sidebar h3 {
   font-size: 15px;
-  color: #1a3a5c;
+  color: #1e293b;
   margin: 0 0 12px 0;
   padding-bottom: 6px;
-  border-bottom: 2px solid #1a3a5c;
+  border-bottom: 2px solid #1e293b;
 }
 
 .biz-info-list {
@@ -79,10 +79,11 @@
   justify-content: space-between;
   padding: 3px 0;
   font-size: 13px;
+  color: #475569;
 }
 
 .biz-label {
-  color: #888;
+  color: #94a3b8;
 }
 
 .biz-skill-block {
@@ -91,7 +92,7 @@
 
 .biz-skill-cat {
   font-size: 13px;
-  color: #1a3a5c;
+  color: #1e293b;
   font-weight: 600;
   margin: 0 0 4px 0;
 }
@@ -106,8 +107,8 @@
   display: inline-block;
   padding: 1px 7px;
   font-size: 11px;
-  color: #1a3a5c;
-  background: #dce6f0;
+  color: #1e293b;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
@@ -123,13 +124,13 @@
 
 .biz-edu-major {
   font-size: 12px;
-  color: #666;
+  color: #475569;
   margin: 0;
 }
 
 .biz-edu-date {
   font-size: 11px;
-  color: #999;
+  color: #94a3b8;
   margin: 0;
 }
 
@@ -145,10 +146,10 @@
 
 .biz-main h3 {
   font-size: 16px;
-  color: #1a3a5c;
+  color: #1e293b;
   margin: 0 0 12px 0;
   padding-bottom: 6px;
-  border-bottom: 1px solid #d0d6dd;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .biz-block {
@@ -163,36 +164,37 @@
 }
 
 .biz-block-head strong {
-  color: #1a3a5c;
+  color: #1e293b;
 }
 
 .biz-role,
 .biz-company {
   font-size: 13px;
-  color: #666;
+  color: #475569;
 }
 
 .biz-date {
   margin-left: auto;
   font-size: 12px;
-  color: #999;
+  color: #94a3b8;
   white-space: nowrap;
 }
 
 .biz-tech {
   font-size: 13px;
-  color: #666;
+  color: #475569;
   margin: 2px 0;
 }
 
 .biz-desc {
-  color: #555;
+  color: #475569;
   margin: 4px 0;
 }
 
 .biz-main ul {
   padding-left: 20px;
   margin: 4px 0;
+  color: #475569;
 }
 
 .biz-main ul li {

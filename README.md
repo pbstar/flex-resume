@@ -72,8 +72,8 @@ resume/
 ├── backend/          # Express + DeepSeek 后端
 │   └── src/
 │       ├── routes/       # REST API 路由
-│       ├── agents/       # LLM Agent 定义
 │       ├── prompts/      # Agent 系统 Prompt
+│       ├── middleware/    # 全局中间件
 │       ├── services/     # 简历加载、PDF 生成
 │       └── data/         # 原始简历、历史记录
 │
