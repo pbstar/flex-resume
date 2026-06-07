@@ -3,6 +3,7 @@ import { JDInput } from "../../components/JDInput/JDInput";
 import { ResumePreview } from "../../components/ResumePreview/ResumePreview";
 import { GreetingPanel } from "../../components/GreetingPanel/GreetingPanel";
 import { HistoryPanel } from "../../components/HistoryPanel/HistoryPanel";
+import { ExportBar } from "../../components/ExportBar/ExportBar";
 import { useToast } from "../../components/Toast/ToastProvider";
 import { useResume } from "../../hooks/useResume";
 import { useGreeting } from "../../hooks/useGreeting";
@@ -22,8 +23,6 @@ export function HomePage() {
   const history = useHistory();
   const pdf = usePDFExport(resume.adaptedResume);
   const { toast } = useToast();
-
-  const isBusy = resume.loading || greeting.loading;
 
   const handleGenerateResume = async (jdText: string, config: ResumeConfig) => {
     try {
@@ -85,22 +84,17 @@ export function HomePage() {
           onCompanyIntroChange={setCompanyIntro}
           onGenerateResume={handleGenerateResume}
           onGenerateGreeting={handleGenerateGreeting}
-          loading={isBusy ? (resume.loading ? "resume" : "greeting") : null}
+          resumeLoading={resume.loading}
+          greetingLoading={greeting.loading}
         />
       </header>
 
-      <GreetingPanel
-        greetings={greeting.greetings}
-        loading={greeting.loading}
-        onCopy={handleCopy}
-      />
-
       <main className="home-main container">
+        <GreetingPanel greetings={greeting.greetings} onCopy={handleCopy} />
         <ResumePreview
           ref={templateRef}
           data={resume.adaptedResume}
           templateId={templateId}
-          loading={resume.loading}
         />
       </main>
 
@@ -121,28 +115,12 @@ export function HomePage() {
       />
 
       {resume.adaptedResume && (
-        <footer className="home-footer">
-          <div className="footer-left">
-            <span className="footer-label">模板风格</span>
-            <select
-              value={templateId}
-              onChange={(e) => setTemplateId(e.target.value)}
-            >
-              <option value="simple">简洁风</option>
-              <option value="business">商务风</option>
-              <option value="creative">创意风</option>
-            </select>
-          </div>
-          <div className="footer-right">
-            <button
-              className="btn-pdf"
-              onClick={handleExportPDF}
-              disabled={pdf.exporting}
-            >
-              {pdf.exporting ? "⏳ 导出中…" : "📥 导出 PDF"}
-            </button>
-          </div>
-        </footer>
+        <ExportBar
+          templateId={templateId}
+          onTemplateChange={setTemplateId}
+          exporting={pdf.exporting}
+          onExport={handleExportPDF}
+        />
       )}
     </div>
   );

@@ -13,7 +13,8 @@ interface Props {
     companyIntro: string,
     config: GreetingConfig,
   ) => void;
-  loading: "resume" | "greeting" | null;
+  resumeLoading: boolean;
+  greetingLoading: boolean;
 }
 
 export function JDInput({
@@ -23,7 +24,8 @@ export function JDInput({
   onCompanyIntroChange,
   onGenerateResume,
   onGenerateGreeting,
-  loading,
+  resumeLoading,
+  greetingLoading,
 }: Props) {
   const [showResumeConfig, setShowResumeConfig] = useState(false);
   const [showGreetingConfig, setShowGreetingConfig] = useState(false);
@@ -70,7 +72,7 @@ export function JDInput({
         <div className="action-group">
           <button
             className="btn-accent"
-            disabled={loading !== null || isEmpty}
+            disabled={resumeLoading || greetingLoading || isEmpty}
             onClick={() =>
               onGenerateGreeting(jd, companyIntro, {
                 count: greetingCount,
@@ -79,8 +81,8 @@ export function JDInput({
               })
             }
           >
-            {loading === "greeting" ? <span className="spinner" /> : null}
-            {loading === "greeting" ? "生成中…" : "✨ 生成话术"}
+            {greetingLoading ? <span className="spinner" /> : null}
+            {greetingLoading ? "生成中…" : "✨ 生成话术"}
           </button>
           <button
             className="btn-config"
@@ -138,7 +140,7 @@ export function JDInput({
         <div className="action-group">
           <button
             className="btn-primary"
-            disabled={loading !== null || isEmpty}
+            disabled={resumeLoading || greetingLoading || isEmpty}
             onClick={() =>
               onGenerateResume(jd, {
                 length: resumeLength,
@@ -146,8 +148,8 @@ export function JDInput({
               })
             }
           >
-            {loading === "resume" ? <span className="spinner" /> : null}
-            {loading === "resume" ? "AI 组装中…" : "📄 生成简历"}
+            {resumeLoading ? <span className="spinner" /> : null}
+            {resumeLoading ? "AI 组装中…" : "📄 生成简历"}
           </button>
           <button
             className="btn-config"

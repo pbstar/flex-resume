@@ -137,9 +137,10 @@ resume/
 │   │   │       └── HomePage.css
 │   │   ├── components/
 │   │   │   ├── JDInput/          # JD 输入区域（双栏输入 + 配置面板）
-│   │   │   ├── ResumePreview/    # 简历预览区（空状态 / 模板渲染 / Loading）
+│   │   │   ├── ResumePreview/    # 简历预览区（模板渲染）
 │   │   │   ├── GreetingPanel/    # 打招呼话术面板（列表 + 复制）
 │   │   │   ├── HistoryPanel/     # 历史记录侧边面板
+│   │   │   ├── ExportBar/        # 底部导出栏（模板切换 + PDF 导出）
 │   │   │   ├── Toast/            # Toast 提示组件
 │   │   │   └── ErrorBoundary/    # React 错误边界（捕获渲染异常）
 │   │   └── templates/
