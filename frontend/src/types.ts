@@ -11,12 +11,10 @@ export interface AdaptedResume {
     email: string;
     github: string;
     blog: string;
-    linkedin: string | null;
   };
   skills: {
     category: string;
     tags: string[];
-    level: string;
   }[];
   workExperience: {
     id: string;
@@ -33,8 +31,6 @@ export interface AdaptedResume {
     company: string;
     name: string;
     platform: string;
-    startDate: string;
-    endDate: string;
     techStack: string[];
     description: string;
     responsibilities: string[];

@@ -9,8 +9,7 @@
     "phone": "你的手机号",
     "email": "your-email@example.com",
     "github": "https://github.com/your-id",
-    "blog": "你的博客地址或留空",
-    "linkedin": null
+    "blog": "你的博客地址或留空"
   },
   "skills": [
     {
@@ -24,8 +23,7 @@
         "Vue3",
         "Vite",
         "Webpack"
-      ],
-      "level": "expert"
+      ]
     },
     {
       "category": "后端技术",
@@ -33,8 +31,7 @@
         "Node.js",
         "Express",
         "MySQL"
-      ],
-      "level": "proficient"
+      ]
     }
   ],
   "workExperience": [
@@ -61,8 +58,6 @@
       "company": "所属公司",
       "name": "项目名称",
       "platform": "PC 或 Mobile",
-      "startDate": "YYYY-MM",
-      "endDate": "YYYY-MM",
       "techStack": [
         "技术栈1",
         "技术栈2"

@@ -79,9 +79,6 @@ export function SimpleTemplate({ data }: Props) {
                 {proj.platform === "Mobile" ? "移动端" : "PC端"}
               </span>
             </div>
-            <div className="block-date">
-              {proj.startDate} - {proj.endDate}
-            </div>
           </div>
           <p className="tech-stack">
             <strong>技术要点：</strong>

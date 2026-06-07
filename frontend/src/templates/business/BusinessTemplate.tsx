@@ -114,9 +114,6 @@ export function BusinessTemplate({ data }: Props) {
                 <div className="biz-block-head">
                   <strong>{p.name}</strong>
                   <span className="biz-company">{p.company}</span>
-                  <span className="biz-date">
-                    {p.startDate} - {p.endDate}
-                  </span>
                 </div>
                 <p className="biz-tech">技术栈：{p.techStack.join(" + ")}</p>
                 <p className="biz-desc">{p.description}</p>

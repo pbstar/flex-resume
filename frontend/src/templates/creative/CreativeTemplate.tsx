@@ -14,7 +14,10 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
         <h1>{basic.name}</h1>
         <p className="ct-title">{basic.title}</p>
         <div className="ct-meta-row">
-          <span>{basic.gender} · {basic.age}岁 · {basic.education} · {basic.yearsOfExperience}年经验</span>
+          <span>
+            {basic.gender} · {basic.age}岁 · {basic.education} ·{" "}
+            {basic.yearsOfExperience}年经验
+          </span>
         </div>
         <div className="ct-contact-row">
           <span>{basic.phone}</span>
@@ -33,7 +36,9 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
             <span className="ct-skill-cat">{s.category}</span>
             <div className="ct-chips">
               {s.tags.map((t) => (
-                <span key={t} className="ct-chip">{t}</span>
+                <span key={t} className="ct-chip">
+                  {t}
+                </span>
               ))}
             </div>
           </div>
@@ -48,13 +53,17 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
             <div key={w.id} className="ct-tl-item">
               <div className="ct-tl-marker">
                 <span className="ct-tl-dot" />
-                {i < workExperience.length - 1 && <span className="ct-tl-line" />}
+                {i < workExperience.length - 1 && (
+                  <span className="ct-tl-line" />
+                )}
               </div>
               <div className="ct-tl-body">
                 <div className="ct-tl-head">
                   <h3>{w.company}</h3>
                   <span className="ct-tl-role">{w.position}</span>
-                  <span className="ct-tl-date">{w.startDate} — {w.endDate}</span>
+                  <span className="ct-tl-date">
+                    {w.startDate} — {w.endDate}
+                  </span>
                 </div>
                 {w.description && <p className="ct-desc">{w.description}</p>}
                 {w.highlights.length > 0 && (
@@ -79,11 +88,12 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
               <div className="ct-proj-top">
                 <h3>{p.name}</h3>
                 <span className="ct-proj-company">{p.company}</span>
-                <span className="ct-proj-date">{p.startDate} — {p.endDate}</span>
               </div>
               <div className="ct-proj-tech">
                 {p.techStack.map((t) => (
-                  <span key={t} className="ct-chip ct-chip-tech">{t}</span>
+                  <span key={t} className="ct-chip ct-chip-tech">
+                    {t}
+                  </span>
                 ))}
               </div>
               <p className="ct-desc">{p.description}</p>
@@ -106,7 +116,9 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
           {education.map((e, i) => (
             <div key={i} className="ct-edu">
               <strong>{e.school}</strong>
-              <p>{e.major} · {e.degree} · {e.startDate} — {e.endDate}</p>
+              <p>
+                {e.major} · {e.degree} · {e.startDate} — {e.endDate}
+              </p>
             </div>
           ))}
         </section>
