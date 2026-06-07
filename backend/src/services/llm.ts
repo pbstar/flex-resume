@@ -1,39 +1,18 @@
 /**
- * LLM 服务 — 简历数据加载 + DeepSeek API 直连客户端
+ * LLM 服务 — DeepSeek API 直连客户端
  */
-
-import { readFileSync } from "fs";
-import { resolve } from "path";
-import { getDataDir } from "../utils/paths.js";
-
-// ─── 简历数据 ────────────────────────────────────────────
-
-let RAW_RESUME: unknown;
-
-try {
-  const rawResumePath = resolve(getDataDir(import.meta.url), "raw-resume.json");
-  RAW_RESUME = JSON.parse(readFileSync(rawResumePath, "utf-8"));
-} catch (err: any) {
-  console.error("[LLM] 无法加载原始简历文件:", err.message);
-  console.error(
-    "[LLM] 请复制 src/data/raw-resume.example.json 为 raw-resume.json 并填入你的简历数据",
-  );
-  process.exit(1);
-}
-
-// ─── DeepSeek API 客户端 ──────────────────────────────────
 
 const BASE_URL = "https://api.deepseek.com";
 const DEFAULT_MODEL = "deepseek-v4-pro";
 
-const DEFAULT_TIMEOUT_MS = 120_000; // 120 秒
+const DEFAULT_TIMEOUT_MS = 300_000; // 5 分钟
 const MAX_RETRIES = 2;
 
 interface ChatOptions {
   /** 模型名称，默认 deepseek-v4-pro */
   model?: string;
   thinking?: string; // enabled, disabled
-  /** 请求超时（毫秒），默认 120s */
+  /** 请求超时（毫秒），默认 5 分钟 */
   timeout?: number;
   /** 最大重试次数（仅 5xx/网络错误），默认 2 */
   maxRetries?: number;
@@ -148,5 +127,3 @@ export async function deepseekChat(
 
   throw lastError || new Error("DeepSeek API 请求失败（已达最大重试次数）");
 }
-
-export { RAW_RESUME };

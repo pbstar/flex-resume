@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
-import { RAW_RESUME, deepseekChat } from "../services/llm.js";
+import { deepseekChat } from "../services/llm.js";
+import { extractResumeData } from "../services/resume-data.js";
 import { GREETING_SYSTEM_PROMPT } from "../prompts/greeting-prompt.js";
 import { cleanJSON } from "../utils/clean-json.js";
 import { validateJD } from "../utils/validate-jd.js";
@@ -17,9 +18,11 @@ greetingRouter.post("/generate", async (req: Request, res: Response) => {
     throw new AppError(400, jdError);
   }
 
+  const { resumeData } = extractResumeData();
+
   const userMessage = JSON.stringify({
     jd,
-    rawResume: RAW_RESUME,
+    rawResume: resumeData,
     companyIntro: companyIntro || null,
     config: {
       count: 3,
