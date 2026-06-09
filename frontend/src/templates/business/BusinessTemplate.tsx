@@ -72,7 +72,7 @@ export function BusinessTemplate({ data }: Props) {
               <div key={i} className="biz-edu-item">
                 <p className="biz-edu-school">{e.school}</p>
                 <p className="biz-edu-major">
-                  {e.major} · {e.degree}
+                  {e.major} · {e.level}
                 </p>
                 <p className="biz-edu-date">
                   {e.startDate} - {e.endDate}

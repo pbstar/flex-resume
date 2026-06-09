@@ -117,7 +117,7 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
             <div key={i} className="ct-edu">
               <strong>{e.school}</strong>
               <p>
-                {e.major} · {e.degree} · {e.startDate} — {e.endDate}
+                {e.major} · {e.level} · {e.startDate} — {e.endDate}
               </p>
             </div>
           ))}

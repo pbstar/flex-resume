@@ -178,7 +178,7 @@ resume/
 ## 数据流
 
 ```
-用户粘贴 JD → 选择配置（篇幅/侧重点/风格/模板）
+用户粘贴 JD → 选择配置（篇幅/风格/模板）
   ├─ 生成简历：POST /api/resume/generate
   │   → Resume Agent (DeepSeek LLM) 解析 JD + 筛选改写原始简历
   │   → 返回适配后的简历 JSON

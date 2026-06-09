@@ -80,7 +80,7 @@
     {
       "school": "学校名称",
       "major": "专业",
-      "degree": "本科/硕士/专科",
+      "level": "本科/硕士/专科",
       "startDate": "YYYY-MM",
       "endDate": "YYYY-MM"
     }

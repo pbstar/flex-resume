@@ -121,7 +121,7 @@ export function SimpleTemplate({ data }: Props) {
                 <span className="sep">|</span>
                 <span>{edu.major}</span>
                 <span className="sep">|</span>
-                <span>{edu.degree}</span>
+                <span>{edu.level}</span>
               </div>
               <span>
                 {edu.startDate} - {edu.endDate}
