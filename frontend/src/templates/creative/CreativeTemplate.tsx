@@ -15,8 +15,8 @@ export function CreativeTemplate({ data }: { data: AdaptedResume }) {
         <p className="ct-title">{basic.title}</p>
         <div className="ct-meta-row">
           <span>
-            {basic.gender} · {basic.age}岁 · {basic.education} ·{" "}
-            {basic.yearsOfExperience}年经验
+            {basic.gender} · {basic.age} · {basic.education} · {basic.workYears}
+            经验
           </span>
         </div>
         <div className="ct-contact-row">

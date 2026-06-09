@@ -19,13 +19,13 @@ export function SimpleTemplate({ data }: Props) {
         <span className="sep">|</span>
         <span>{basic.gender}</span>
         <span className="sep">|</span>
-        <span>{basic.age}岁</span>
+        <span>{basic.age}</span>
         <span className="sep">|</span>
         <span>{basic.education}</span>
         <span className="sep">|</span>
-        <span>{basic.yearsOfExperience}年经验</span>
+        <span>{basic.workYears}经验</span>
         <br />
-        <span>{basic.phone}（微信同号）</span>
+        <span>{basic.phone}</span>
         <span className="sep">|</span>
         <span>{basic.email}</span>
         <span className="sep">|</span>

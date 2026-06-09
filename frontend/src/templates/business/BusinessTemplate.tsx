@@ -37,7 +37,7 @@ export function BusinessTemplate({ data }: Props) {
               </li>
               <li>
                 <span className="biz-label">年龄</span>
-                <span>{basic.age}岁</span>
+                <span>{basic.age}</span>
               </li>
               <li>
                 <span className="biz-label">学历</span>
@@ -45,7 +45,7 @@ export function BusinessTemplate({ data }: Props) {
               </li>
               <li>
                 <span className="biz-label">经验</span>
-                <span>{basic.yearsOfExperience}年</span>
+                <span>{basic.workYears}</span>
               </li>
             </ul>
           </div>

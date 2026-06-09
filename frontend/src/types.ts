@@ -9,11 +9,11 @@ export interface AdaptedResume {
     /** 性别 */
     gender: string;
     /** 年龄 */
-    age: number;
+    age: string;
     /** 学历（如"本科"、"硕士"） */
     education: string;
     /** 工作年限 */
-    yearsOfExperience: number;
+    workYears: string;
     /** 手机号 */
     phone: string;
     /** 邮箱 */
